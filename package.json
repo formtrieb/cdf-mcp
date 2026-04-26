@@ -1,9 +1,13 @@
 {
   "name": "@formtrieb/cdf-mcp",
-  "version": "1.7.0",
+  "version": "1.7.1",
   "description": "MCP server exposing CDF (Component Description Format) tooling to LLM clients — Profile read/diff/coverage, component validation, vocab-divergence, Figma walker + renderers.",
   "license": "Apache-2.0",
   "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "cdf-mcp": "dist/index.js"
+  },
   "files": [
     "dist",
     "README.md",
@@ -26,7 +30,7 @@
   ],
   "scripts": {
     "start": "tsx src/index.ts",
-    "build": "rm -rf dist && tsup && pnpm run bundle:fragments",
+    "build": "rm -rf dist && tsup && pnpm run bundle:fragments && chmod +x dist/index.js",
     "bundle:fragments": "mkdir -p dist/spec-fragments && cp -R spec-fragments/profile dist/spec-fragments/",
     "build:typecheck": "tsc --noEmit",
     "test": "vitest",
