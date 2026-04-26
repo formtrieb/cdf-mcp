@@ -1,0 +1,48 @@
+{
+  "name": "@formtrieb/cdf-mcp",
+  "version": "1.7.0",
+  "description": "MCP server exposing CDF (Component Description Format) tooling to LLM clients — Profile read/diff/coverage, component validation, vocab-divergence, Figma walker + renderers.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/formtrieb/cdf-mcp.git"
+  },
+  "homepage": "https://github.com/formtrieb/cdf",
+  "keywords": [
+    "cdf",
+    "component-description-format",
+    "mcp",
+    "model-context-protocol",
+    "claude",
+    "design-system",
+    "figma"
+  ],
+  "scripts": {
+    "start": "tsx src/index.ts",
+    "build": "rm -rf dist && tsup && pnpm run bundle:fragments",
+    "bundle:fragments": "mkdir -p dist/spec-fragments && cp -R spec-fragments/profile dist/spec-fragments/",
+    "build:typecheck": "tsc --noEmit",
+    "test": "vitest",
+    "prepublishOnly": "pnpm run build && vitest --run"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.28.0",
+    "@formtrieb/cdf-core": "^1.0.1",
+    "yaml": "^2.7.0",
+    "zod": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "tsup": "^8.5.1",
+    "tsx": "^4.0.0",
+    "typescript": "^5.0.0",
+    "vitest": "^3.0.0"
+  }
+}

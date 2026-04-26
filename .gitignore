@@ -1,0 +1,12 @@
+node_modules/
+dist/
+*.tsbuildinfo
+*.log
+.DS_Store
+.env
+.env.*
+
+# Test artefacts — created by tests that chdir() into the package root
+# when verifying default-output-path behaviour. Scope narrowly to the
+# package root so fixture YAMLs under tests/fixtures/** stay tracked.
+/*.profile.yaml

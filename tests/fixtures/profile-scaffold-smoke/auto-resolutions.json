@@ -1,0 +1,5 @@
+{
+  "vocab-naming": { "action": "split-recommended" },
+  "grammar-pattern": { "action": "accept-grammar" },
+  "base-state":     { "action": "align-to-default" }
+}

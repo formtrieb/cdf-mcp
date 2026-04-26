@@ -1,0 +1,49 @@
+name: VocabDivergeSmoke
+version: "1.0.0"
+cdf_version: ">=1.0.0"
+dtcg_version: "2025.10"
+description: Minimal Profile for smoke-testing cdf_vocab_diverge.
+
+vocabularies:
+  hierarchy:
+    description: Visual emphasis levels.
+    values: [brand, primary, secondary]
+
+token_grammar:
+  color.controls:
+    pattern: "color.controls.{hierarchy}.{element}.{state}"
+    dtcg_type: color
+    description: Control token grammar.
+    axes:
+      hierarchy:
+        vocabulary: hierarchy
+      element:
+        values: [stroke, background, text]
+      state:
+        values: [default, hover, pressed, disabled]
+
+interaction_patterns:
+  pressable:
+    description: Click targets — buttons, links, toggles.
+    states: [default, hover, pressed, disabled]
+    token_layer: Controls
+    token_mapping:
+      default: default
+      hover: hover
+      pressed: pressed
+      disabled: disabled
+
+theming:
+  modifiers: {}
+  set_mapping: {}
+
+naming:
+  css_prefix: "ts-"
+  token_prefix: "--ts-"
+  methodology: BEM
+  pattern: "{prefix}{component}"
+  casing:
+    properties: camelCase
+    component_names: PascalCase
+    css_selectors: kebab-case
+  reserved_names: {}

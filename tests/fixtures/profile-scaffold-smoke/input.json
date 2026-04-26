@@ -1,0 +1,46 @@
+{
+  "tokens": [
+    { "path": "color.primary.bg",     "value": "#3b82f6", "type": "color" },
+    { "path": "color.primary.border", "value": "#1e3a8a", "type": "color" },
+    { "path": "color.primary.text",   "value": "#ffffff", "type": "color" },
+    { "path": "color.primary.icon",   "value": "#f0f9ff", "type": "color" },
+    { "path": "color.secondary.bg",     "value": "#64748b", "type": "color" },
+    { "path": "color.secondary.border", "value": "#334155", "type": "color" },
+    { "path": "color.secondary.text",   "value": "#ffffff", "type": "color" },
+    { "path": "color.secondary.icon",   "value": "#f1f5f9", "type": "color" },
+
+    { "path": "surface.bg.rest",     "value": "#ffffff", "type": "color" },
+    { "path": "surface.border.rest", "value": "#e5e7eb", "type": "color" },
+
+    { "path": "spacing.sm", "value": "8px",  "type": "dimension" },
+    { "path": "spacing.md", "value": "16px", "type": "dimension" },
+    { "path": "spacing.lg", "value": "24px", "type": "dimension" }
+  ],
+  "modes": [
+    { "collection": "Theme",   "values": ["Light", "Dark"] },
+    { "collection": "Density", "values": ["Comfortable", "Compact"] }
+  ],
+  "components": [
+    {
+      "name": "Button",
+      "properties": [
+        { "name": "variant", "type": "variant", "values": ["primary", "secondary"] },
+        { "name": "size",    "type": "variant", "values": ["sm", "md", "lg"] },
+        { "name": "state",   "type": "variant", "values": ["default", "hover", "disabled"] }
+      ],
+      "token_refs": [
+        "color.primary.bg",
+        "color.primary.text",
+        "color.secondary.bg",
+        "color.secondary.text"
+      ]
+    },
+    {
+      "name": "Alert",
+      "properties": [
+        { "name": "variant", "type": "variant", "values": ["info", "success", "warning"] }
+      ]
+    }
+  ],
+  "source": { "kind": "handwritten", "ref": "profile-scaffold-smoke" }
+}

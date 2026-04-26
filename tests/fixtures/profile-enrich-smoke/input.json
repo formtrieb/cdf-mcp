@@ -1,0 +1,51 @@
+{
+  "tokens": [
+    { "path": "color.controls.brand.background.rest",     "value": "#0f62fe", "type": "color" },
+    { "path": "color.controls.brand.text.rest",           "value": "#ffffff", "type": "color" },
+    { "path": "color.controls.brand.background.hover",    "value": "#0043ce", "type": "color" },
+    { "path": "color.controls.primary.background.rest",   "value": "#24a148", "type": "color" },
+    { "path": "color.controls.primary.stroke.rest",       "value": "#198038", "type": "color" },
+    { "path": "color.controls.primary.text.rest",         "value": "#ffffff", "type": "color" },
+    { "path": "color.controls.secondary.background.rest", "value": "#e0e0e0", "type": "color" },
+    { "path": "color.controls.secondary.stroke.rest",     "value": "#c6c6c6", "type": "color" },
+    { "path": "color.controls.secondary.text.rest",       "value": "#161616", "type": "color" },
+    { "path": "radius.sm", "value": "4px",  "type": "dimension" },
+    { "path": "radius.md", "value": "8px",  "type": "dimension" },
+    { "path": "radius.lg", "value": "16px", "type": "dimension" }
+  ],
+  "components": [
+    {
+      "name": "Button",
+      "properties": [
+        { "name": "variant", "type": "variant", "values": ["brand", "primary", "secondary"] }
+      ],
+      "token_refs": [
+        "color.controls.brand.background.rest",
+        "color.controls.brand.text.rest",
+        "color.controls.primary.background.rest",
+        "color.controls.primary.text.rest"
+      ]
+    },
+    {
+      "name": "Tag",
+      "properties": [
+        { "name": "variant", "type": "variant", "values": ["primary", "secondary"] }
+      ],
+      "token_refs": [
+        "color.controls.primary.background.rest",
+        "color.controls.primary.stroke.rest",
+        "color.controls.primary.text.rest"
+      ]
+    },
+    {
+      "name": "Card",
+      "properties": [],
+      "token_refs": [
+        "color.controls.secondary.background.rest",
+        "color.controls.secondary.stroke.rest",
+        "radius.md"
+      ]
+    }
+  ],
+  "source": { "kind": "handwritten", "ref": "profile-enrich-smoke" }
+}

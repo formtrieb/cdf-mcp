@@ -1,0 +1,35 @@
+name: MenuItem
+category: Actions
+description: Menu item. INTENTIONALLY contains two vocab drifts for smoke testing.
+
+# DRIFT: `primery` is a typo of the declared `primary` (Levenshtein 1).
+properties:
+  variant:
+    type: hierarchy
+    values: [brand, primery]
+    default: primery
+    description: Visual emphasis.
+
+# DRIFT: `over` is a typo of the pressable pattern's declared `hover` (Levenshtein 1).
+states:
+  over:
+    values: [on, off]
+    description: Pointer-over state.
+  pressed:
+    values: [on, off]
+    description: Active-press state.
+
+anatomy:
+  root:
+    element: button
+    description: Menu item root.
+
+tokens:
+  root: {}
+
+accessibility:
+  element: button
+  focus-visible: true
+  keyboard:
+    Enter: activate
+  aria: []

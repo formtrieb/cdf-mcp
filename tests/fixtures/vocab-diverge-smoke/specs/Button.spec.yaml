@@ -1,0 +1,35 @@
+name: Button
+category: Actions
+description: Pressable button. Canonical spec — no drift.
+
+# Kept in sync with Profile hierarchy vocabulary
+properties:
+  variant:
+    type: hierarchy
+    values: [brand, primary]
+    default: primary
+    description: Visual emphasis.
+
+states:
+  hover:
+    values: [on, off]
+    description: Pointer-over state.
+  pressed:
+    values: [on, off]
+    description: Active-press state.
+
+anatomy:
+  root:
+    element: button
+    description: Button root.
+
+tokens:
+  root: {}
+
+accessibility:
+  element: button
+  focus-visible: true
+  keyboard:
+    Enter: activate
+    Space: activate
+  aria: []

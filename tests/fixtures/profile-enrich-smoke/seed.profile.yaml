@@ -1,0 +1,52 @@
+name: Acme
+version: "1.0.0"
+cdf_version: ">=1.0.0 <2.0.0"
+dtcg_version: "2025.10"
+description: "Acme design system (enrich-smoke seed)."
+
+vocabularies:
+  hierarchy:
+    description: "Visual emphasis levels."
+    values: [brand, primary, secondary]
+  element:
+    description: "Anatomy parts of a control."
+    values: [background, stroke, text]
+
+token_grammar:
+
+  color.controls:
+    pattern: "color.controls.{hierarchy}.{element}.{state}"
+    dtcg_type: color
+    description: "Pre-Phase-2 placeholder."
+    axes:
+      hierarchy:
+        vocabulary: hierarchy
+      element:
+        vocabulary: element
+      state:
+        values: [rest, hover, pressed, disabled]
+
+  radius:
+    pattern: "radius.{scale}"
+    dtcg_type: dimension
+    description: "Pre-Phase-2 placeholder."
+    axes:
+      scale:
+        values: [sm, md, lg]
+
+token_layers: []
+standalone_tokens: {}
+interaction_patterns: {}
+theming:
+  axes: []
+  modifiers: {}
+naming:
+  css_prefix: "acme-"
+  token_prefix: "--acme-"
+  methodology: "BEM"
+  pattern: "{prefix}{component}"
+  casing:
+    component_names: PascalCase
+    properties: camelCase
+  reserved_names: {}
+categories: {}

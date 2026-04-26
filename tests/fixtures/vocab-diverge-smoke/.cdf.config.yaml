@@ -1,0 +1,4 @@
+spec_directories:
+  - ./specs
+profile_path: ./smoke.profile.yaml
+token_sources: []
