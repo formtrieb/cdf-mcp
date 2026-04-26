@@ -5,6 +5,28 @@ format loosely follows [Keep a Changelog](https://keepachangelog.com/);
 the project is pre-1.0 public, so breaking changes still happen but are
 called out explicitly.
 
+## [1.7.2] — 2026-04-26
+
+### Fixed — server crash on startup when `.cdf.config.yaml` references a not-yet-existing profile
+
+The MCP server crashed on startup (`MCP error -32000: Connection closed`)
+when the working directory contained a `.cdf.config.yaml` with a
+`profile_path:` pointing to a file that didn't yet exist. This is the
+**bootstrap state for new plugin users** — the
+[`/cdf:scaffold-profile`](https://github.com/formtrieb/cdf-plugin)
+skill writes the profile YAML mid-run, so the path is set before the
+file lands. Failing here bricked the plugin before any tools could
+register.
+
+The fix lives in `@formtrieb/cdf-core` v1.0.3 (`parseConfigFile` now
+skips profile loading + emits a stderr warning when the file is
+missing, instead of throwing). This release of cdf-mcp pins
+`^1.0.3` to force a clean dep resolution past stale `^1.0.1` /
+`^1.0.2` caches; no behavioural changes in cdf-mcp itself.
+
+Same 22 tools, same 90 tests, same `bin: { "cdf-mcp": "dist/index.js" }`
+shape from v1.7.1.
+
 ## [1.7.1] — 2026-04-26
 
 ### Fixed — `npx @formtrieb/cdf-mcp` invocation

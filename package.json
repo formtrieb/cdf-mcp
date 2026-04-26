@@ -1,6 +1,6 @@
 {
   "name": "@formtrieb/cdf-mcp",
-  "version": "1.7.1",
+  "version": "1.7.2",
   "description": "MCP server exposing CDF (Component Description Format) tooling to LLM clients — Profile read/diff/coverage, component validation, vocab-divergence, Figma walker + renderers.",
   "license": "Apache-2.0",
   "type": "module",
