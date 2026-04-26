@@ -5,6 +5,29 @@ format loosely follows [Keep a Changelog](https://keepachangelog.com/);
 the project is pre-1.0 public, so breaking changes still happen but are
 called out explicitly.
 
+## [1.7.1] — 2026-04-26
+
+### Fixed — `npx @formtrieb/cdf-mcp` invocation
+
+v1.7.0 shipped without `bin`/`main` fields and without a shebang on
+`dist/index.js`, so any `npx @formtrieb/cdf-mcp` invocation failed with
+`could not determine executable to run`. This blocked the
+[`cdf` Claude Code plugin](https://github.com/formtrieb/cdf-plugin)'s
+`.mcp.json` from launching the server.
+
+- Added `"bin": { "cdf-mcp": "dist/index.js" }` to package.json so npx
+  has an executable target.
+- Added `"main": "dist/index.js"` for module-resolution completeness.
+- Added `banner.js: "#!/usr/bin/env node"` to `tsup.config.ts` so the
+  built `dist/index.js` carries the shebang ahead of the ESM bundle.
+- Added `chmod +x dist/index.js` to the build script (npm preserves
+  exec bits across publish).
+
+No behavioural changes; same 22 tools, same 90 tests, same
+`@formtrieb/cdf-core@^1.0.1` dependency. Caret-pinned consumers of
+`^1.7.0` (including the `cdf` plugin) will pick up this fix on next
+`npm install` / `npx`-cache-miss.
+
 ## [1.7.0] — 2026-04-26
 
 ### Added — Figma Access Modernization (N1+N5 bundle, Session B)
