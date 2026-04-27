@@ -5,6 +5,33 @@ format loosely follows [Keep a Changelog](https://keepachangelog.com/);
 the project is pre-1.0 public, so breaking changes still happen but are
 called out explicitly.
 
+## [1.7.3] — 2026-04-27
+
+### Added — Renderer emits "What this snapshot surfaced" block between BANNER and FINDINGS
+
+The snapshot renderer now surfaces structural counts the profile drafted
+(vocabularies, token grammars, theming modifiers, interaction patterns)
+in a dedicated block between the DRAFT banner and the findings list.
+Origin: V1+V3 Material 3 retro item 10 — readers of `findings.md`
+previously saw only "14 findings → 11 blind-spots" and missed that the
+companion `profile.yaml` carried 8 vocabs / 5 grammars / 2 modifiers /
+2 patterns. That false-negative trust signal cost adoption confidence;
+the new block counterbalances BANNER + FINDINGS with what the snapshot
+*captured*.
+
+- `formatSurfacedSummary(profile)` counts top-level keys per section,
+  excluding any starting with `_` (`_quality: draft` markers).
+- Vocabularies + grammars list the first three keys with an ellipsis
+  if more exist; modifiers + patterns emit count only.
+- Profiles where every counted section is empty (or holds only
+  `_`-prefixed keys) collapse back to the pre-v1.7.3 byte-layout —
+  no misleading empty header.
+
+The renderer code itself lives in `@formtrieb/cdf-core` v1.0.4; this
+release of cdf-mcp pins `^1.0.4` so npx-resolved installs pick up the
+new behaviour. No code changes in cdf-mcp itself — same 22 tools, same
+`bin: { "cdf-mcp": "dist/index.js" }` shape, same 90 cdf-mcp tests.
+
 ## [1.7.2] — 2026-04-26
 
 ### Fixed — server crash on startup when `.cdf.config.yaml` references a not-yet-existing profile
